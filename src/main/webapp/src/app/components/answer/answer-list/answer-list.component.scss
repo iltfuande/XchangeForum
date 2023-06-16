@@ -1,0 +1,65 @@
+@import "src/variables";
+
+.answer-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  .mat-paginator {
+    margin-top: 20px;
+    background-color: $form-color;
+  }
+}
+
+.answer-card {
+  width: 50%;
+  margin: 20px auto 0;
+  padding: 20px;
+  border: 3px solid #3543aa;
+  background-color: $form-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .answer-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #767474;
+    width: 100%;
+
+    .dates {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-direction: column;
+      flex: 1;
+
+      .date {
+        margin-top: 5px;
+        font-size: 12px;
+        color: $date-color;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  .mat-card-content {
+    width: 100%;
+
+    .respond {
+      margin-top: 10px;
+      line-height: 1.5;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+  }
+}

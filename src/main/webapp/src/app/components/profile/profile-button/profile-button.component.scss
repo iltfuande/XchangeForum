@@ -1,0 +1,52 @@
+::ng-deep .dialog-class {
+  mat-dialog-container {
+    padding: 0;
+  }
+}
+
+.profile-dialog {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.profile-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.profile-dialog-header h2 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.profile-dialog-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-dialog-info {
+  margin-bottom: 16px;
+}
+
+.profile-dialog-info p {
+  margin: 8px 0;
+}
+
+.profile-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-dialog-actions button {
+  margin-left: 8px;
+}
+
+

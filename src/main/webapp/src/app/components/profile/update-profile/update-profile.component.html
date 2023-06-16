@@ -1,0 +1,60 @@
+<div class='edit-profile-dialog'>
+  <div class='profile-dialog-header'>
+    <div></div>
+    <h2>Редагувати обліковий запис</h2>
+    <button mat-icon-button (click)='closeDialog()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class='profile-dialog-content'>
+    <form [formGroup]='editProfileForm' (ngSubmit)='saveChanges()'>
+      <div class='profile-dialog-info'>
+        <mat-form-field appearance='fill'>
+          <mat-label>Ім'я</mat-label>
+          <input matInput formControlName='firstName' required>
+          <mat-error *ngIf="editProfileForm.get('firstName')?.invalid">
+            Ім'я користувача має містити 2 символа мінімум
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance='fill'>
+          <mat-label>Прізвище</mat-label>
+          <input matInput formControlName='lastName' required>
+          <mat-error *ngIf="editProfileForm.get('lastName')?.invalid">
+            Прізвище користувача має містити 2 символа мінімум
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance='fill'>
+          <mat-label>Пароль</mat-label>
+          <input matInput type='password' name='password' formControlName='password'>
+          <button mat-icon-button matSuffix (click)='togglePassword()'>
+            <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="editProfileForm.get('password')?.value && editProfileForm.get('password')?.invalid">
+            Пароль користувача має містити 5 символів мінімум
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance='fill'>
+          <mat-label>Підтвердіть пароль</mat-label>
+          <input matInput type='password' name='confirmPassword' formControlName='confirmPassword'>
+          <button mat-icon-button matSuffix (click)='toggleConfirmPassword()'>
+            <mat-icon>{{ showConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+          </button>
+          <mat-error *ngIf="editProfileForm.get('confirmPassword')?.invalid">
+            Паролі не співпадають :(
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class='edit-profile-dialog-actions'>
+        <button mat-raised-button color='primary' type='submit'
+                [disabled]="editProfileForm.get('firstName')?.invalid || editProfileForm.get('lastName')?.invalid
+                  || editProfileForm.get('password')?.invalid || editProfileForm.get('confirmPassword')?.getError('notSame')">
+          Зберегти
+        </button>
+        <button mat-raised-button color='warn' (click)='closeDialog()'>Відмінити</button>
+      </div>
+    </form>
+  </div>
+</div>

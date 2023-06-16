@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <span class="logo" (click)='onHome()'>XchangeForum</span>
+  <app-search-bar></app-search-bar>
+  <button *ngIf='isLoggedIn$' (click)='ask()' mat-button class='menu-button'>
+    <mat-icon>contact_support</mat-icon>
+    Запитати
+  </button>
+  <button *ngIf='isLoggedIn$ | async;else login' mat-button [matMenuTriggerFor]="profileMenu" class='menu-button'>
+    <mat-icon>account_circle</mat-icon>
+    Обліковий запис
+  </button>
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item (click)='showProfileInfo()'>
+      <mat-icon>person</mat-icon>
+      Детальніше
+    </button>
+    <button mat-menu-item (click)='logout()'>
+      <mat-icon>logout</mat-icon>
+      Вийти
+    </button>
+  </mat-menu>
+
+  <ng-template #login>
+    <button mat-button routerLink="/login" class="menu-button">
+      <mat-icon>login</mat-icon>
+      Увійти
+    </button>
+  </ng-template>
+</mat-toolbar>

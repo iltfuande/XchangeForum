@@ -1,0 +1,41 @@
+<div class='question-list' *ngIf='questions !== undefined;else spinner'>
+  <mat-card class='question-card' *ngFor='let question of questions'>
+    <mat-card-header>
+      <mat-card-title (click)='openQuestion(question)'>{{ question.title }}</mat-card-title>
+      <div class='tags-container'>
+        <div class='tags-wrapper'>
+          <ng-container *ngFor='let tag of question.tag'>
+            <span class='tag' (click)='onTagClick(tag)'>{{ '#' + tag }}</span>
+          </ng-container>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p
+        class='description'>{{ question.description | slice:0:100 }}{{ question.description.length > 100 ? '...' : '' }}</p>
+      <p class='created-date'>Запитано: {{ question.timeCreated | dateAgo }}</p>
+      <p *ngIf='question.timeModify' class='created-date'>Змінено: {{ question.timeModify | dateAgo }}</p>
+      <div *ngIf='question.hidden' style='color: red'>
+        Відповідь схована модератором
+      </div>
+    </mat-card-content>
+    <div class='close-container'>
+      <p class='status'
+         [ngClass]="{ 'closed': question.close, 'open': !question.close }">{{ question.close ? 'Closed' : 'Open'}}</p>
+    </div>
+  </mat-card>
+  <mat-paginator (page)='onPageChanged($event)'
+                 [length]='totalQuestions'
+                 [pageSize]='pageSize'
+                 [pageSizeOptions]='[5, 10, 25, 50]'
+  >
+  </mat-paginator>
+
+</div>
+
+<ng-template #spinner>
+  <div class='spinner-container'>
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

@@ -1,0 +1,15 @@
+.idea/
+.gradle
+build
+out/
+bin/main/*
+
+# Mac OS
+.DS_Store
+
+
+# frontend generated
+src/main/webapp/node_modules
+src/main/webapp/build
+src/main/resources/static/
+src/main/generated

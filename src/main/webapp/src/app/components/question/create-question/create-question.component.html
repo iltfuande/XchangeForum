@@ -1,0 +1,50 @@
+<div class='question-container'>
+  <mat-card class='question-card'>
+    <mat-card-header>
+      <mat-card-title>Задайте питання</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]='questionForm'>
+        <mat-form-field appearance='fill'>
+          <mat-label>Питання</mat-label>
+          <input matInput name='title' formControlName='title' required />
+          <mat-error *ngIf="questionForm.get('title')?.invalid">
+            Заголовок питання має бути 10-100 символів
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance='fill'>
+          <mat-label>Опис</mat-label>
+          <textarea matInput name='description' formControlName='description' rows='5' required></textarea>
+          <mat-error *ngIf="questionForm.get('description')?.invalid">
+            Опис питання має бути 20-5000 символів
+          </mat-error>
+        </mat-form-field>
+
+        <div *ngIf='tags.length < 5; else showOnlyTags'>
+          <mat-form-field appearance='fill'>
+            <mat-label>Теги</mat-label>
+            <input matInput #tagsInput required />
+            <mat-error *ngIf="questionForm.get('tag')?.invalid">
+              Додайте хоча б один тег
+            </mat-error>
+          </mat-form-field>
+          <div class="tags-wrapper">
+            <div class="tag" *ngFor="let tag of tags.controls; let i = index" (click)="removeTag(i)">{{ tag.value }}</div>
+          </div>
+          <button mat-raised-button color="primary" (click)="addTags(tagsInput)">Додати теги</button>
+        </div>
+        <ng-template #showOnlyTags>
+          <div class="tags-wrapper">
+            <div class="tag" *ngFor="let tag of tags.controls; let i = index" (click)="removeTag(i)">{{ tag.value }}</div>
+          </div>
+        </ng-template>
+
+        <div class='button-container'>
+          <button mat-raised-button (click)='createQuestion()' color='primary' [disabled]='!questionForm.valid'>Створити</button>
+          <button mat-raised-button (click)='back()' color='warn'>Назад</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

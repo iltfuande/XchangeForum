@@ -1,0 +1,49 @@
+@import "src/variables";
+
+.answer-container {
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  margin-top: 30px;
+
+  .answer-card {
+    width:50%;
+    text-align: center;
+    border: 3px solid #3543aa;
+    background-color: $form-color;
+
+    .mat-card-header {
+      margin-bottom: 10px;
+      margin-top: 20px;
+      margin-right: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mat-form-field {
+      width: calc(100% - 20px);
+      margin: 10px 0;
+    }
+
+    textarea {
+      height: 100%;
+      max-height: 500px;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 50%;
+    }
+  }
+}

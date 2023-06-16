@@ -1,0 +1,22 @@
+.star-background {
+  background-color: rgba(3, 19, 42, 0.78);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -1;
+
+  .star {
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: relative;
+    transition: background-color 0.5s ease;
+    &.lit {
+      background-color: #f5d742;
+    }
+  }
+}

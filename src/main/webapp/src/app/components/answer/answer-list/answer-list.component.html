@@ -1,0 +1,43 @@
+<div class='answer-list'>
+  <mat-card class='answer-card' *ngFor='let answer of answers'>
+    <mat-card-header class="answer-header">
+      <div class='dates'>
+        <p class='date'>Відповів: {{ answer.timeCreated | dateAgo }}</p>
+        <p *ngIf='answer.timeModify' class='date'>Змінено: {{ answer.timeModify | dateAgo }}</p>
+      </div>
+
+      <div class='header-actions'>
+        <button *ngIf='isModerator && !answer.hidden' (click)='hide(answer.id)' mat-icon-button color='primary'>
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button *ngIf='isModerator && answer.hidden' (click)='unhide(answer.id)' mat-icon-button color='primary'>
+          <mat-icon>visibility_off</mat-icon>
+        </button>
+        <button *ngIf='currentUserId === answer.userId || isModerator' mat-icon-button (click)='updateAnswer(answer.questionId, answer.id)' color='primary'>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button *ngIf='currentUserId === answer.userId' mat-icon-button (click)='deleteAnswer(answer.id)' color='warn'>
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)='showProfileInfo(answer.userId)'>
+          <mat-icon>person</mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <pre class='respond'>
+        {{ answer.respond }}
+      </pre>
+      <div *ngIf='answer.hidden' style='color: red'>
+        Відповідь схована модератором
+      </div>
+    </mat-card-content>
+  </mat-card>
+  <mat-paginator (page)='onPageChanged($event)'
+                 [length]='totalAnswer'
+                 [pageSize]='pageSize'
+                 [pageSizeOptions]='[5, 10, 25, 50]'
+  >
+  </mat-paginator>
+</div>

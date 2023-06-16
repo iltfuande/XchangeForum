@@ -1,0 +1,3 @@
+ALTER TABLE answer ADD COLUMN time_created TIMESTAMP NOT NULL DEFAULT now(), ADD COLUMN time_modify TIMESTAMP;
+
+ALTER TABLE question ALTER COLUMN time_created SET DEFAULT now();

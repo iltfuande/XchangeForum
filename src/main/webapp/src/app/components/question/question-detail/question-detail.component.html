@@ -1,0 +1,62 @@
+<div class='question'>
+  <mat-card *ngIf='question !== undefined;else spinner' class='question-detail'>
+    <mat-card-header>
+      <mat-card-title>
+        <div
+          [ngClass]="{ 'closed': question.close, 'open': !question.close }">{{ question.close ? 'Питання закрите' : 'Питання відкрите'}}
+        </div>
+        {{ question.title }}
+      </mat-card-title>
+
+      <div class='header-actions'>
+        <button *ngIf='isModerator && !question.hidden' (click)='hide()' mat-icon-button color='primary'>
+          <mat-icon>visibility</mat-icon>
+        </button>
+        <button *ngIf='isModerator && question.hidden' (click)='unhide()' mat-icon-button color='primary'>
+          <mat-icon>visibility_off</mat-icon>
+        </button>
+        <button *ngIf='question.createdUserId === this.currentUserId || isModerator' mat-icon-button
+                (click)='updateQuestion()' color='primary'>
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button *ngIf='question.createdUserId === this.currentUserId' mat-icon-button (click)='deleteQuestion()'
+                color='warn'>
+          <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button (click)='showProfileInfo()'>
+          <mat-icon>person</mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class='date-tags-container'>
+        <div class='dates-wrapper'>
+          <p class='created-date'>Спитали: {{ question.timeCreated | dateAgo }}</p>
+          <p *ngIf='question.timeModify' class='created-date'>Змінено: {{ question.timeModify | dateAgo }}</p>
+        </div>
+        <div class='tags-wrapper'>
+          <ng-container *ngFor='let tag of question.tag'>
+            <span class='tag' (click)='onTagClick(tag)'>{{ '#' + tag }}</span>
+          </ng-container>
+        </div>
+      </div>
+      <pre class='description'>
+        {{ question.description }}
+      </pre>
+      <div *ngIf='question.hidden' style='color: red'>
+        Питання сховане модератором
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <app-create-answer *ngIf='canAnswer()' [questionId]='question.id'></app-create-answer>
+
+  <app-answer-list></app-answer-list>
+
+  <ng-template #spinner>
+    <div class='spinner-container'>
+      <mat-spinner></mat-spinner>
+    </div>
+  </ng-template>
+</div>

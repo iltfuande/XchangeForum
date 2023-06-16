@@ -1,0 +1,119 @@
+@import "src/variables";
+
+.question {
+  min-height: 85%;
+}
+
+.question-detail {
+  width: 50%;
+  margin: 20px auto 0;
+  padding: 20px;
+  border: 3px solid #3543aa;
+  background-color: $form-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-bottom: 2px solid #767474;
+    margin-bottom: 10px;
+
+    .open {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $green;
+    }
+
+    .closed {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $red;
+    }
+  }
+
+  .mat-card-content {
+
+    .date-tags-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .dates-wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        .created-date {
+          font-size: 12px;
+          color: $date-color;
+          margin-bottom: 5px;
+        }
+      }
+
+      .tags-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        height: 10px;
+
+        .tag {
+          display: inline-block;
+          padding: 5px 10px;
+          margin-right: 10px;
+          margin-bottom: 10px;
+          font-size: 12px;
+          color: $tag-font-color;
+          background-color: $tag-background;
+          border-radius: 3px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $tag-background-hover;
+          }
+        }
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+
+      .mat-icon {
+        margin-top: -15px !important;
+      }
+    }
+  }
+
+  .mat-card-content {
+    width: 100%;
+
+    .description {
+      margin-top: 20px;
+      line-height: 1.5;
+      font-size: 14px;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+
+    .created-date {
+      margin-top: 10px;
+      font-size: 12px;
+      color: $date-color;
+    }
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}

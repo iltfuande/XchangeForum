@@ -1,0 +1,28 @@
+<div class='answer-container'>
+  <mat-card class='answer-card'>
+    <mat-card-header *ngIf='!hiddenCreation;else unhideButton'>
+      <mat-card-title>Дати відповідь</mat-card-title>
+    </mat-card-header>
+    <mat-card-content *ngIf='!hiddenCreation'>
+      <form [formGroup]='answerForm'>
+        <mat-form-field appearance='fill'>
+          <mat-label>Відповідь</mat-label>
+          <textarea matInput name='respond' formControlName='respond' rows='5' required></textarea>
+          <mat-error *ngIf="answerForm.get('respond')?.invalid">
+            Відповідь має бути 20-5000 символів
+          </mat-error>
+        </mat-form-field>
+      </form>
+      <div class='button-container'>
+        <button mat-raised-button (click)='createAnswer()' color='primary' [disabled]='!answerForm.valid'>Відповісти</button>
+        <button mat-raised-button (click)='hide()' color='warn'>Сховати</button>
+      </div>
+    </mat-card-content>
+    <ng-template #unhideButton>
+      <mat-card-header>
+        <mat-card-title>...</mat-card-title>
+      </mat-card-header>
+      <button mat-raised-button (click)='unhide()' color='warn'>Розгорнути</button>
+    </ng-template>
+  </mat-card>
+</div>

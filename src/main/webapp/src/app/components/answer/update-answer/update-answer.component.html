@@ -1,0 +1,32 @@
+<div *ngIf='answer !== undefined;else spinner' class='answer-container'>
+  <mat-card class='answer-card'>
+    <mat-card-header>
+      <mat-card-title>Редагувати відповідь</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]='answerForm'>
+        <mat-form-field appearance='fill'>
+          <mat-label>Відповідь</mat-label>
+          <textarea matInput name='respond' formControlName='respond' rows='5' required></textarea>
+          <mat-error *ngIf="answerForm.get('respond')?.invalid">
+            Відповідь має бути 20-5000 символів
+          </mat-error>
+        </mat-form-field>
+
+        <div class='button-container'>
+          <button *ngIf='isModerator;else update' mat-raised-button (click)='moderateAnswer()' color='primary' [disabled]='!answerForm.valid'>Змінити</button>
+          <ng-template #update>
+            <button mat-raised-button (click)='updateAnswer()' color='primary' [disabled]='!answerForm.valid'>Змінити</button>
+          </ng-template>
+          <button mat-raised-button (click)='back()' color='warn'>Назад</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #spinner>
+  <div class='spinner-container'>
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

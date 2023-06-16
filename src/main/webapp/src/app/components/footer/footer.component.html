@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="footer">
+  <span class="author">© {{ year }} {{ authorFullName }}</span>
+  <div class="contact">
+    <a href="mailto:{{ mail }}" target="_blank" rel="noopener">
+      <span>Пошта: {{ mail }}</span>
+      <mat-icon>email</mat-icon>
+    </a>
+    <a href="{{ telegram }}" target="_blank" rel="noopener">
+      <span>Телеграм:</span>
+      <img src='assets/img/icon/telegram_icon.svg' alt='Telegram' />
+    </a>
+    <a href="{{ linkedIn }}" target="_blank" rel="noopener">
+      <span>LinkedIn:</span>
+      <img src='assets/img/icon/linkedin_icon.svg' alt='LinkedIn' />
+    </a>
+    <a href="{{ github }}" target="_blank" rel="noopener">
+      <span>GitHub:</span>
+      <img src='assets/img/icon/github_icon.svg' alt='GitHub' />
+    </a>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:15:///test_schema
+    username: test_user
+    password: test_password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: off # database queries should not be performed during view rendering
+    properties.hibernate:
+      globally_quoted_identifiers: true # quote qualifiers like `user` in queries to avoid errors
+    show-sql: true
+    properties.hibernate.format_sql: true
+
+graduate:
+  jwtSecret: 576E5A7234753778214125432A462D4A614E645267556B58703273357638792F
+  jwtAccessTokenExpirationMs: 7776000000 # 90 days
+  

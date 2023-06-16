@@ -1,0 +1,96 @@
+@import "src/variables";
+
+.question-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  min-height: 85%;
+  margin: 0 auto;
+
+  .question-card {
+    width: 100%;
+    margin-top: 20px;
+    background-color: $form-color;
+
+    .mat-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .mat-card-title {
+        cursor: pointer;
+      }
+
+      .tags-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+
+        .tags-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+
+          .tag {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: $tag-font-color;
+            background-color: $tag-background;
+            border-radius: 3px;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $tag-background-hover;
+            }
+          }
+        }
+      }
+    }
+
+    .mat-card-content {
+      .description {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .created-date {
+        margin-top: 5px;
+        font-size: 12px;
+        color: $date-color;
+      }
+    }
+
+    .close-container {
+      margin-right: 10px;
+    }
+
+    .open {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $green;
+    }
+
+    .closed {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: $red;
+    }
+  }
+
+  .mat-paginator {
+    margin-top: 20px;
+    background-color: $form-color;
+  }
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}

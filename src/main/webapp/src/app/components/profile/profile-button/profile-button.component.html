@@ -1,0 +1,26 @@
+<div class='profile-dialog'>
+  <div class='profile-dialog-header'>
+    <div></div>
+    <h2>{{ profileDialogData.title }}</h2>
+    <button mat-icon-button (click)='closeDialog()'>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class='profile-dialog-content'>
+    <div class='profile-dialog-info'>
+      <p><strong>Ім'я:</strong> {{ profileDialogData.user.firstName }}</p>
+      <p><strong>Прізвище:</strong> {{ profileDialogData.user.lastName }}</p>
+      <p><strong>Псевдонім:</strong> {{ profileDialogData.user.nickname }}</p>
+      <p *ngIf='profileDialogData.user.email'><strong>Пошта:</strong> {{ profileDialogData.user.email }}</p>
+      <p><strong>Дата реєстрації:</strong> {{ profileDialogData.user.timeCreated | date }}</p>
+      <p *ngIf='profileDialogData.user.banned'><strong style='color: red'>Користувач забанен</strong></p>
+    </div>
+    <div class='profile-dialog-actions'>
+      <button *ngIf='profileDialogData.banText && !profileDialogData.user.banned' mat-raised-button color='primary' (click)='banUser()'>{{ profileDialogData.banText }}</button>
+      <button *ngIf='profileDialogData.unbanText && profileDialogData.user.banned' mat-raised-button color='primary' (click)='unbanUser()'>{{ profileDialogData.unbanText }}</button>
+      <button *ngIf='profileDialogData.moderateText' mat-raised-button color='primary' (click)='editProfile()'>{{ profileDialogData.moderateText }}</button>
+      <button *ngIf='profileDialogData.editText' mat-raised-button color='primary' (click)='editProfile()'>{{ profileDialogData.editText }}</button>
+      <button *ngIf='profileDialogData.deleteText' mat-raised-button color='warn' (click)='deleteProfile()'>{{ profileDialogData.deleteText }}</button>
+    </div>
+  </div>
+</div>

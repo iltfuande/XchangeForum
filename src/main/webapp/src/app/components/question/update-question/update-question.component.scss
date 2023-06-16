@@ -1,0 +1,89 @@
+@import "src/variables";
+
+.question-container {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .question-card {
+    width: 800px;
+    max-width: 100%;
+    text-align: center;
+    background-color: $form-color;
+
+    .mat-card-header {
+      margin-bottom: 10px;
+      margin-top: 20px;
+      margin-right: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .mat-form-field {
+      width: calc(100% - 20px);
+      margin: 10px 0;
+    }
+
+    textarea {
+      height: 100%;
+      max-height: 200px;
+    }
+
+    .tag-input {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+
+      .mat-form-field {
+        width: auto;
+        margin: 5px;
+      }
+    }
+
+    .mat-checkbox {
+      display: flex;
+      margin-left: 11px;
+    }
+
+    .tags-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 2%;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-size: 12px;
+      color: $tag-font-color;
+      background-color: $tag-background;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    .tag:hover {
+      background-color: $tag-background-hover;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+}

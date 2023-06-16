@@ -1,0 +1,20 @@
+<mat-form-field class="search-field" floatLabel="never">
+  <input matInput placeholder="Search" [(ngModel)]="searchValue" (keyup.enter)="onSearch()">
+  <mat-icon matPrefix="search" (click)='onSearch()'>search</mat-icon>
+  <mat-icon matSuffix [matMenuTriggerFor]="filterMenu">filter_list</mat-icon>
+  <mat-icon matSuffix (click)='clean()'>close</mat-icon>
+</mat-form-field>
+
+<mat-menu #filterMenu="matMenu">
+  <button mat-menu-item (click)='applyFilter("new")'>
+    Нові
+  </button>
+  <button mat-menu-item (click)='applyFilter("old")'>
+    Старі
+  </button>
+  <button mat-menu-item (click)='applyFilter("")'>
+    Скинути
+  </button>
+</mat-menu>
+
+
